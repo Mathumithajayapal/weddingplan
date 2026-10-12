@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Flavours & Fillings - Wedding Cake & Dessert Table Designer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#fce7f3', 
+                            DEFAULT: '#db2777', 
+                            dark: '#9d174d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-black text-gray-800 dark:text-gray-100 flex flex-col min-h-screen font-sans transition-colors duration-300">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center gap-2 text-brand no-underline group">
+                <i class="fas fa-cake-candles text-3xl transition-transform duration-200 group-hover:scale-95"></i>
+                <span class="text-2xl font-serif font-bold text-gray-900 dark:text-white tracking-tight">SweetArt</span>
+            </a>
+
+            <nav class="hidden xl:flex items-center gap-2">
+                <div class="relative group">
+                    <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm text-gray-700 dark:text-gray-200 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand dark:hover:text-brand transition-colors">Home <i class="fas fa-caret-down"></i></a>
+                    <div class="absolute left-0 top-full pt-2 hidden group-hover:block min-w-[200px]">
+                        <div class="bg-white dark:bg-gray-800 border border-brand-light dark:border-gray-700 rounded-2xl shadow-xl py-2">
+                            <a href="index.html" class="block px-6 py-2 font-medium text-gray-700 dark:text-gray-200 hover:bg-brand hover:text-white transition-colors">Home1</a>
+                            <a href="homepage2.html" class="block px-6 py-2 font-medium text-gray-700 dark:text-gray-200 hover:bg-brand hover:text-white transition-colors">Home2</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="px-4 py-2 rounded-full font-semibold text-sm text-gray-700 dark:text-gray-200 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand dark:hover:text-brand transition-colors">About</a>
+                <a href="service.html" class="px-4 py-2 rounded-full font-semibold text-sm text-gray-700 dark:text-gray-200 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand dark:hover:text-brand transition-colors">Service</a>
+                <a href="flavours.html" class="px-4 py-2 rounded-full font-semibold text-sm bg-brand-light dark:bg-gray-800 text-brand dark:text-brand transition-colors">Flavours</a>
+                <a href="pricing.html" class="px-4 py-2 rounded-full font-semibold text-sm text-gray-700 dark:text-gray-200 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand dark:hover:text-brand transition-colors">Pricing</a>
+                <a href="gallery.html" class="px-4 py-2 rounded-full font-semibold text-sm text-gray-700 dark:text-gray-200 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand dark:hover:text-brand transition-colors">Gallery</a>
+                <a href="Contact.html" class="px-4 py-2 rounded-full font-semibold text-sm text-gray-700 dark:text-gray-200 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand dark:hover:text-brand transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="rtlToggle" class="hidden xl:flex w-10 h-10 items-center justify-center rounded-full text-gray-600 dark:text-gray-300 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand transition-colors text-xs font-bold" title="Toggle RTL/LTR">RTL</button>
+                <button id="themeToggle" class="hidden xl:flex w-10 h-10 items-center justify-center rounded-full text-gray-600 dark:text-gray-300 hover:bg-brand-light dark:hover:bg-gray-800 hover:text-brand transition-colors">
+                    <i class="fas fa-moon text-lg"></i>
+                </button>
+                <a href="contact.html" class="hidden xl:inline-flex items-center px-6 py-2 border-2 border-brand text-brand font-bold rounded-full text-sm hover:bg-brand hover:text-white transition-colors">Book Now</a>
+                <button id="hamburger" class="xl:hidden w-10 h-10 flex items-center justify-center rounded-lg border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HAMBURGER / MOBILE MENU ================= -->
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/70 z-[998] opacity-0 invisible transition-opacity duration-300"></div>
+    
+    <div id="mobileNavMenu" class="fixed top-0 right-0 w-[80%] max-w-[320px] h-full bg-white dark:bg-gray-900 z-[999] shadow-2xl border-l-4 border-brand transform translate-x-full transition-transform duration-300 overflow-y-auto pt-24 px-6 pb-8">
+        <ul class="flex flex-col gap-3">
+            <li><a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors">Home1</a></li>
+            <li><a href="homepage2.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors"> Home 2</a></li>
+            <li><a href="about.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors"> About</a></li>
+            <li><a href="service.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors"> service</a></li>
+            <li><a href="flavours.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-brand bg-brand-light dark:bg-gray-800 font-semibold text-brand dark:text-brand transition-colors cursor-default"> Flavours</a></li>
+            <li><a href="pricing.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors"> Pricing</a></li>
+            <li><a href="gallery.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors"> Gallery</a></li>
+            <li><a href="Contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors"> Contact</a></li>
+            <li>
+                <button id="mobileRtlToggle" class="flex w-full items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors text-start">
+                     <span id="mobileRtlText"> RTL</span>
+                </button>
+            </li>
+            <li>
+                <button id="mobileThemeToggle" class="flex w-full items-center gap-3 px-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 font-semibold text-gray-800 dark:text-gray-200 hover:border-brand hover:text-brand transition-colors text-start">
+                     <span>Dark Mode</span>
+                </button>
+            </li>
+            <li class="mt-4"><a href="login.html" class="flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-brand text-white font-bold hover:bg-brand-dark transition-colors"> Login</a></li>
+        </ul>
+    </div>
+
+    <main class="flex-grow">
+        <!-- ================= HERO BANNER ================= -->
+        <section class="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('images/desserts (4).jpg');"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40 z-10"></div>
+            
+            <div class="relative z-20 max-w-5xl px-6 text-center text-white mt-16">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/50 bg-brand/20 backdrop-blur-sm text-sm font-semibold mb-6">
+                    <i class="fas fa-utensils text-brand-light"></i>
+                    <span>A Sensory Experience</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-serif font-semibold mb-6 drop-shadow-lg text-white leading-tight">
+                    Flavours & Fillings
+                </h1>
+                
+                <p class="text-lg md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto drop-shadow-md font-light">
+                    Every slice is an adventure. Explore our curated menu of classical combinations, seasonal specialties, and decadent pairings crafted from the finest ingredients.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html" class="px-8 py-4 bg-brand rounded-full font-bold text-white shadow-lg hover:-translate-y-1 hover:shadow-pink-500/30 hover:bg-brand-dark transition-all flex items-center gap-2">
+                        <i class="fas fa-box-open"></i> Order a Tasting Box
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= NEW SECTION 1: CLASSIC FLAVORS (~50 lines) ================= -->
+        <section class="py-24 bg-white dark:bg-black transition-colors duration-300 relative border-b border-gray-100 dark:border-gray-800">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-brand font-bold uppercase tracking-widest text-sm mb-2 block">Timeless</span>
+                    <h2 class="text-4xl font-serif font-semibold text-gray-900 dark:text-white">Classic Cake Menu</h2>
+                </div>
+                <div class="space-y-6">
+                    <div class="group flex flex-col md:flex-row md:items-center justify-between p-6 border border-transparent hover:border-brand-light dark:hover:border-gray-800 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all cursor-default">
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">Madagascar Vanilla <span class="w-12 h-px bg-brand hidden group-hover:block transition-all"></span></h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Fluffy vanilla bean sponge layered with silky Swiss meringue buttercream and homemade raspberry preserve.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-brand text-sm font-bold uppercase tracking-wider"><i class="fas fa-seedling mr-1"></i> Crowd Favorite</div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row md:items-center justify-between p-6 border border-transparent hover:border-brand-light dark:hover:border-gray-800 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all cursor-default">
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">Double Chocolate Truffle <span class="w-12 h-px bg-brand hidden group-hover:block transition-all"></span></h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Decadent Valrhona dark chocolate mud cake paired with whipped espresso ganache and sea salt.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-brand text-sm font-bold uppercase tracking-wider">Rich & Dense</div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row md:items-center justify-between p-6 border border-transparent hover:border-brand-light dark:hover:border-gray-800 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all cursor-default">
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">Amalfi Lemon Curd <span class="w-12 h-px bg-brand hidden group-hover:block transition-all"></span></h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Zesty lemon sponge cake soaked in citrus syrup, filled with tart homemade lemon curd and vanilla buttercream.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-brand text-sm font-bold uppercase tracking-wider"><i class="fas fa-sun mr-1"></i> Summer Classic</div>
+                    </div>
+                    <div class="group flex flex-col md:flex-row md:items-center justify-between p-6 border border-transparent hover:border-brand-light dark:hover:border-gray-800 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all cursor-default">
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">Red Velvet Heritage <span class="w-12 h-px bg-brand hidden group-hover:block transition-all"></span></h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Traditional tender red velvet cocoa cake layered with our signature tangy cream cheese frosting.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-brand text-sm font-bold uppercase tracking-wider">Traditional</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= NEW SECTION 2: SIGNATURE PAIRINGS (~50 lines) ================= -->
+        <section class="py-24 bg-gray-50 dark:bg-gray-900/50 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-brand font-bold uppercase tracking-widest text-sm mb-2 block">The Masterpieces</span>
+                    <h2 class="text-4xl font-serif font-semibold text-gray-900 dark:text-white">Signature Pairings</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 group h-[400px]">
+                        <img src="images/cake (18).jpg" alt="Earl Grey Cake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="bg-brand text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">Premium Tier</div>
+                            <h3 class="text-3xl font-serif text-white mb-2">London Fog</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">Earl Grey infused sponge cake, layered with delicate lavender honey buttercream and fresh blackberry compote.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 group h-[400px]">
+                        <img src="images/cake (15).jpg" alt="Pistachio Rose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="bg-brand text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">Premium Tier</div>
+                            <h3 class="text-3xl font-serif text-white mb-2">Persian Romance</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">Roasted pistachio sponge brushed with rosewater syrup, filled with white chocolate ganache and crushed pistachios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= NEW SECTION 3: DIETARY ACCOMMODATIONS (~50 lines) ================= -->
+        <section class="py-24 bg-white dark:bg-black transition-colors duration-300 border-y border-gray-100 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12 bg-brand-light/20 dark:bg-gray-900 rounded-[3rem] p-10 md:p-16 border border-brand-light/50 dark:border-gray-800">
+                    <div class="lg:w-1/3 text-center lg:text-left">
+                        <i class="fas fa-seedling text-4xl text-brand mb-6"></i>
+                        <h2 class="text-3xl font-serif font-semibold text-gray-900 dark:text-white mb-4">Dietary Options</h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            We believe everyone deserves a slice of wedding cake. We maintain strict kitchen protocols to provide stunning, identical-tasting alternatives for your guests with dietary restrictions.
+                        </p>
+                    </div>
+                    <div class="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+                        <div class="bg-white dark:bg-black p-6 rounded-2xl text-center border border-gray-100 dark:border-gray-800 shadow-sm hover:border-brand transition-colors">
+                            <i class="fas fa-leaf text-brand text-2xl mb-3"></i>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">100% Vegan</h4>
+                            <p class="text-xs text-gray-500 mt-1">Plant-based</p>
+                        </div>
+                        <div class="bg-white dark:bg-black p-6 rounded-2xl text-center border border-gray-100 dark:border-gray-800 shadow-sm hover:border-brand transition-colors">
+                            <i class="fas fa-wheat-awn text-brand text-2xl mb-3"></i>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Gluten-Free</h4>
+                            <p class="text-xs text-gray-500 mt-1">Celiac safe</p>
+                        </div>
+                        <div class="bg-white dark:bg-black p-6 rounded-2xl text-center border border-gray-100 dark:border-gray-800 shadow-sm hover:border-brand transition-colors">
+                            <i class="fas fa-tint-slash text-brand text-2xl mb-3"></i>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Dairy-Free</h4>
+                            <p class="text-xs text-gray-500 mt-1">No milk/butter</p>
+                        </div>
+                        <div class="bg-white dark:bg-black p-6 rounded-2xl text-center border border-gray-100 dark:border-gray-800 shadow-sm hover:border-brand transition-colors">
+                            <i class="fas fa-ban text-brand text-2xl mb-3"></i>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Nut-Free</h4>
+                            <p class="text-xs text-gray-500 mt-1">Allergy protocol</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= NEW SECTION 4: THE TASTING BOX CTA (~50 lines) ================= -->
+        <section class="py-24 bg-gray-50 dark:bg-gray-900/50 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col lg:flex-row bg-white dark:bg-black rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-800">
+                    <div class="lg:w-1/2 p-12 flex flex-col justify-center">
+                        <span class="text-brand font-bold uppercase tracking-widest text-sm mb-3 block">At-Home Experience</span>
+                        <h2 class="text-4xl font-serif font-semibold text-gray-900 dark:text-white mb-6">Order a Tasting Box</h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                            Can't decide? Select up to six flavors from our menu and we will ship a beautifully curated tasting box directly to your door, complete with tasting notes and design swatches.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check text-brand mr-3"></i> 6 Generous Slices</li>
+                            <li class="flex items-center text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check text-brand mr-3"></i> Virtual Zoom Consultation</li>
+                            <li class="flex items-center text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check text-brand mr-3"></i> Overnight Nationwide Shipping</li>
+                        </ul>
+                        <a href="contact.html" class="inline-block text-center px-8 py-4 bg-brand text-white font-bold rounded-full hover:bg-brand-dark transition-colors shadow-lg">Order Box for $65</a>
+                    </div>
+                    <div class="lg:w-1/2 relative h-96 lg:h-auto">
+                        <img src="images/desserts (10).jpg" alt="Tasting Box" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= NEW SECTION 5: INGREDIENT SOURCING (~50 lines) ================= -->
+        <section class="py-24 bg-brand dark:bg-brand-dark transition-colors duration-300 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20 z-0"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                <i class="fas fa-star text-4xl mb-6 text-brand-light"></i>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Uncompromising Quality</h2>
+                <p class="text-xl mb-12 font-light text-white/90 max-w-3xl mx-auto">
+                    A cake is only as good as the ingredients used to bake it. We refuse to use artificial flavorings, preservatives, or shortening. 
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-white/20 pt-12">
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold mb-2">European Butter</h4>
+                        <p class="text-sm text-brand-light">We exclusively use 82% fat European butter for the silkiest Swiss meringue buttercream.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold mb-2">Madagascar Vanilla</h4>
+                        <p class="text-sm text-brand-light">Real, whole vanilla beans scraped by hand, never artificial extracts or syrups.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold mb-2">Local Farms</h4>
+                        <p class="text-sm text-brand-light">Organic eggs and seasonal fruits sourced from local farmers markets to support our community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800 pt-16 pb-8 px-6 mt-auto transition-colors duration-300">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 text-brand no-underline mb-4">
+                    <i class="fas fa-cake-candles text-2xl"></i>
+                    <span class="text-xl font-serif font-bold text-gray-900 dark:text-white">SweetArt</span>
+                </a>
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed pr-4 lg:pr-8">
+                    Elevating your celebration with custom-designed wedding cakes, artisanal pastries, and immersive dessert tables crafted with passion and premium ingredients.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-serif font-medium text-brand uppercase text-sm tracking-wider mb-6 border-b-2 border-brand pb-2 inline-block">Services</h4>
+                <ul class="space-y-3">
+                    <li><a href="service.html" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Custom Wedding Cakes</a></li>
+                    <li><a href="service.html" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Dessert Table Styling</a></li>
+                    <li><a href="service.html" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Groom's Cakes</a></li>
+                    <li><a href="contact.html" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Schedule a Tasting</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-serif font-medium text-brand uppercase text-sm tracking-wider mb-6 border-b-2 border-brand pb-2 inline-block">Information</h4>
+                <ul class="space-y-3">
+                    <li><a href="about.html" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Our Baking Process</a></li>
+                    <li><a href="faq.html" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Flavors & Fillings</a></li>
+                    <li><a href="#" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Delivery & Setup</a></li>
+                    <li><a href="#" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Terms & Policies</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-serif font-medium text-brand uppercase text-sm tracking-wider mb-6 border-b-2 border-brand pb-2 inline-block">Connect</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand transition-all flex items-center gap-3"><i class="fab fa-facebook-f w-4 text-center"></i> Facebook</a></li>
+                    <li><a href="#" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand transition-all flex items-center gap-3"><i class="fa-brands fa-pinterest-p w-4 text-center"></i> Pinterest</a></li>
+                    <li><a href="#" class="text-gray-500 dark:text-gray-400 hover:text-brand dark:hover:text-brand transition-all flex items-center gap-3"><i class="fab fa-instagram w-4 text-center"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm text-gray-400">
+            © 2026 SweetArt Wedding Cakes. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileNavMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            
+            const rtlToggle = document.getElementById('rtlToggle');
+            const mobileRtlToggle = document.getElementById('mobileRtlToggle');
+            const mobileRtlText = document.getElementById('mobileRtlText');
+
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const mobileThemeToggleBtn = document.getElementById('mobileThemeToggle');
+            const htmlElement = document.documentElement;
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fas fa-sun text-lg"></i>';
+                    if (mobileThemeToggleBtn) mobileThemeToggleBtn.innerHTML = '<i class="fas fa-sun w-5 text-brand"></i> <span>Light Mode</span>';
+                } else {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fas fa-moon text-lg"></i>';
+                    if (mobileThemeToggleBtn) mobileThemeToggleBtn.innerHTML = '<i class="fas fa-moon w-5 text-brand"></i> <span>Dark Mode</span>';
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme(true);
+            } else {
+                setTheme(false);
+            }
+
+            const toggleTheme = () => {
+                const isCurrentlyDark = htmlElement.classList.contains('dark');
+                setTheme(!isCurrentlyDark);
+            };
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+            function setRTL(isRtl) {
+                if (isRtl) {
+                    htmlElement.setAttribute('dir', 'rtl');
+                    if (rtlToggle) rtlToggle.innerText = 'LTR';
+                    if (mobileRtlText) mobileRtlText.innerText = 'Switch to LTR';
+                    mobileMenu.classList.remove('right-0', 'border-l-4');
+                    mobileMenu.classList.add('left-0', 'border-r-4');
+                    if (mobileMenu.classList.contains('translate-x-full')) {
+                        mobileMenu.classList.remove('translate-x-full');
+                        mobileMenu.classList.add('-translate-x-full');
+                    }
+                } else {
+                    htmlElement.setAttribute('dir', 'ltr');
+                    if (rtlToggle) rtlToggle.innerText = 'RTL';
+                    if (mobileRtlText) mobileRtlText.innerText = 'Switch to RTL';
+                    mobileMenu.classList.remove('left-0', 'border-r-4');
+                    mobileMenu.classList.add('right-0', 'border-l-4');
+                    if (mobileMenu.classList.contains('-translate-x-full')) {
+                        mobileMenu.classList.remove('-translate-x-full');
+                        mobileMenu.classList.add('translate-x-full');
+                    }
+                }
+            }
+
+            const toggleRTL = () => {
+                const isRtl = htmlElement.getAttribute('dir') === 'rtl';
+                setRTL(!isRtl);
+            };
+
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+            function openMenu() {
+                const isRtl = htmlElement.getAttribute('dir') === 'rtl';
+                mobileMenu.classList.remove(isRtl ? '-translate-x-full' : 'translate-x-full');
+                overlay.classList.remove('opacity-0', 'invisible');
+                overlay.classList.add('opacity-100', 'visible');
+                document.body.style.overflow = 'hidden';
+                hamburger.innerHTML = '<i class="fas fa-times text-lg"></i>';
+            }
+
+            function closeMenu() {
+                const isRtl = htmlElement.getAttribute('dir') === 'rtl';
+                mobileMenu.classList.add(isRtl ? '-translate-x-full' : 'translate-x-full');
+                overlay.classList.remove('opacity-100', 'visible');
+                overlay.classList.add('opacity-0', 'invisible');
+                document.body.style.overflow = '';
+                hamburger.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+            }
+
+            hamburger.addEventListener('click', () => {
+                const isRtl = htmlElement.getAttribute('dir') === 'rtl';
+                const isClosed = isRtl ? mobileMenu.classList.contains('-translate-x-full') : mobileMenu.classList.contains('translate-x-full');
+                if (isClosed) openMenu();
+                else closeMenu();
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1280) closeMenu();
+            });
+        });
+    </script>
+</body>
+</html>
